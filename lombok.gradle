@@ -1,0 +1,16 @@
+repositories {
+    mavenCentral()
+}
+
+ext {
+    lombokVersion = "1.18.24"
+    lombokGroup = "org.projectlombok"
+}
+
+dependencies {
+    compileOnly "$lombokGroup:lombok:$lombokVersion"
+    annotationProcessor "$lombokGroup:lombok:$lombokVersion"
+
+    testCompileOnly "$lombokGroup:lombok:$lombokVersion"
+    testAnnotationProcessor "$lombokGroup:lombok:$lombokVersion"
+}
