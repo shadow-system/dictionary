@@ -22,5 +22,4 @@ dependencies {
     implementation("org.mongodb:mongodb-driver-reactivestreams:4.6.1")
     implementation("org.springframework.boot:spring-boot-configuration-processor:$springBootVersion")
     implementation("org.springframework.boot:spring-boot-starter-webflux:$springBootVersion")
-    implementation("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
 }
