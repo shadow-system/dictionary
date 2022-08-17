@@ -13,11 +13,14 @@ import shadow.dictionary.service.WordService;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
 
+/**
+ * Controller for word API
+ */
 @Configuration
 public class WordRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> route(WordService wordService) {
+    public RouterFunction<ServerResponse> wordRoutes(WordService wordService) {
         return RouterFunctions
             .route(
                 POST("/word/save").and(contentType(MediaType.APPLICATION_JSON)),
