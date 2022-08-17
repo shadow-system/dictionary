@@ -10,35 +10,35 @@ import shadow.dictionary.exception.UserNotFoundException;
 import shadow.dictionary.model.User;
 
 @Service
-public class UserCrud {
+public class UserService {
 
     private final UserRepository repository;
 
     @Autowired
-    public UserCrud(UserRepository repository) {
+    public UserService(UserRepository repository) {
         this.repository = repository;
     }
 
     public Mono<User> create(NewUserRequest request) {
         return Mono.defer(() -> {
-            User user = new User(request.getLogin(), request.getPassword());
+            User user = new User(request.getUsername(), request.getPassword());
             return repository.save(user);
         });
     }
 
-    public Mono<Void> delete(String login) {
-        return repository.deleteUserByLogin(login);
+    public Mono<Void> delete(String username) {
+        return repository.deleteUserByName(username);
     }
 
-    public Mono<User> read(String login) {
-        return repository.findUserByLogin(login);
+    public Mono<User> read(String username) {
+        return repository.findUserByName(username);
     }
 
     public Mono<User> update(UpdateUserRequest request) {
         return Mono
-            .defer(() -> repository.findUserByLogin(request.getOldLogin()))
+            .defer(() -> repository.findUserByName(request.getOldUsername()))
             .flatMap(user -> {
-                var updatedUser = new User(user.getId(), request.getLogin(), request.getPassword());
+                var updatedUser = new User(user.getId(), request.getUsername(), request.getPassword());
                 return repository.save(updatedUser);
             })
             .switchIfEmpty(Mono.error(new UserNotFoundException()));

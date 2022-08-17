@@ -9,7 +9,7 @@ import shadow.dictionary.model.User;
 @Repository
 public interface UserRepository extends ReactiveMongoRepository<User, String> {
 
-    Mono<User> findUserByLogin(String login);
+    Mono<User> findUserByName(String name);
 
-    Mono<Void> deleteUserByLogin(String login);
+    Mono<Void> deleteUserByName(String name);
 }

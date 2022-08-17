@@ -7,10 +7,10 @@ import lombok.Getter;
 @Getter
 public class DeleteUserRequest {
 
-    private final String login;
+    private final String username;
 
     @JsonCreator
-    public DeleteUserRequest(@JsonProperty("login") String login) {
-        this.login = login;
+    public DeleteUserRequest(@JsonProperty("username") String username) {
+        this.username = username;
     }
 }

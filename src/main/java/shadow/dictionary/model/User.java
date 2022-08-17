@@ -16,18 +16,18 @@ public class User {
     @Id
     private String id;
     @Indexed(unique = true)
-    private String login;
+    private String name;
     private String password;
 
     @JsonCreator
-    public User(@JsonProperty("id") String id, @JsonProperty("login") String login, @JsonProperty("password") String password) {
+    public User(@JsonProperty("id") String id, @JsonProperty("name") String name, @JsonProperty("password") String password) {
         this.id = id;
-        this.login = login;
+        this.name = name;
         this.password = password;
     }
 
-    public User(String login, String password) {
-        this.login = login;
+    public User(String name, String password) {
+        this.name = name;
         this.password = password;
     }
 }
